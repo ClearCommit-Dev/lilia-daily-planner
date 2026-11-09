@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Articles · Lilia's Daily Planner</title>
+<meta name="description" content="Gentle ideas on planning, habits and small daily wins.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--sand:#F1E9E1;--paper:#FBF8F4;--white:#fff;--terra:#B9533F;--terra-dark:#9A4130;--warm:#EBCDA6;--ink:#2B211C;--soft:#6E625B;--line:#E4DAD1;
+  --t-terra:#F1B6A6;--t-peach:#F7CFA4;--t-sand:#EADFC8;--t-sage:#C7DABF;--t-lav:#D4D1F1;--t-sky:#BFD8EC;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Atkinson Hyperlegible",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--sans);overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0}
+a{color:var(--terra-dark)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{width:min(1100px,100% - 32px);margin-inline:auto}
+.btn{display:inline-block;background:var(--terra);color:#fff;text-decoration:none;font-weight:700;letter-spacing:.03em;padding:15px 34px;border:2px solid var(--terra)}
+.btn:hover{background:var(--terra-dark);border-color:var(--terra-dark)}
+
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.brand{display:block;text-align:center;font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.04em;color:var(--ink);text-decoration:none;padding:14px 0 6px}
+nav ul{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 26px;list-style:none;margin:0;padding:0 0 12px}
+nav a{color:var(--ink);text-decoration:none;font-size:.95rem;padding:6px 2px;border-bottom:2px solid transparent}
+nav a:hover,nav a[aria-current]{border-color:var(--terra)}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--sand),var(--paper));padding:72px 0 48px;text-align:center}
+.blob{position:absolute;pointer-events:none;border-radius:58% 42% 55% 45% / 50% 60% 40% 50%;filter:blur(2px)}
+.b1{width:380px;height:300px;left:-130px;top:-100px;background:var(--warm);opacity:.6}
+.b2{width:420px;height:320px;right:-140px;bottom:-190px;background:var(--t-terra);opacity:.55}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(2.4rem,5vw,3.8rem)}
+.hero h1::after{content:"";display:block;width:56px;height:2px;background:var(--terra);margin:14px auto 0}
+.hero p{max-width:34em;margin:22px auto 0;color:var(--soft);font-size:1.1rem}
+
+/* article grid: add a new <article class="card"> for each post (newest first) */
+.list{padding:40px 0 90px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
+.card{background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(43,33,28,.5)}
+.cover{aspect-ratio:16/9;position:relative;overflow:hidden}
+.body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+.tag{align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 12px;margin-bottom:12px}
+.card h2{font-size:1.75rem;margin-bottom:10px}
+.card h2 a{color:var(--ink);text-decoration:none}
+.card h2 a::after{content:"";position:absolute;inset:0}
+.card{position:relative}
+.card h2 a:hover{color:var(--terra-dark)}
+.card p{color:var(--soft);margin:0 0 18px;flex:1}
+.meta{font-size:.88rem;color:var(--soft);display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px}
+.meta span:last-child{color:var(--terra-dark);font-weight:700}
+
+/* cover art for the Eisenhower article: a soft 2x2 grid */
+.cover-matrix{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:18px;background:var(--sand);height:100%}
+.cover-matrix span{border-radius:4px}
+
+.soon{background:transparent;border:1.5px dashed var(--line);display:grid;place-items:center;text-align:center;padding:40px 28px;min-height:300px}
+.soon h2{font-size:1.6rem;margin-bottom:8px;color:var(--soft)}
+.soon p{color:var(--soft);margin:0 0 20px}
+.soon:hover{transform:none;box-shadow:none}
+
+footer{background:var(--ink);color:#EFE6DD;padding:34px 0;font-size:.93rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:680px){body{font-size:16px}.grid{grid-template-columns:1fr}.btn{width:100%;text-align:center}}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html">Lilia's Daily Planner</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="articles.html" aria-current="page">Articles</a></li>
+      <li><a href="app.html">Try the app</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="h1">
+    <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span>
+    <div class="wrap">
+      <h1 id="h1">Articles</h1>
+      <p>Gentle ideas on planning, habits and small daily wins.</p>
+    </div>
+  </section>
+
+  <section class="list" aria-label="All articles">
+    <div class="wrap grid">
+
+      <article class="card">
+        <div class="cover" aria-hidden="true">
+          <div class="cover-matrix">
+            <span style="background:var(--t-terra)"></span><span style="background:var(--t-peach)"></span>
+            <span style="background:var(--t-sage)"></span><span style="background:var(--t-lav)"></span>
+          </div>
+        </div>
+        <div class="body">
+          <span class="tag" style="background:var(--t-sage)">Prioritising</span>
+          <h2><a href="eisenhower-matrix.html">The Eisenhower Matrix, Explained Simply</a></h2>
+          <p>Sort every task by two questions, urgent and important, and give your day a clear, calm shape. With a student example.</p>
+          <div class="meta"><span>6 min read</span><span>Read article →</span></div>
+        </div>
+      </article>
+
+      <div class="card soon">
+        <div>
+          <h2>More articles on the way</h2>
+          <p>New pieces on planning and habits will appear here.</p>
+          <a class="btn" href="app.html">Try the app now</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Lilia's Daily Planner (working name)</span>
+    <span>Early MVP · Made in Adelaide, Australia</span>
+  </div>
+</footer>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lilia's Daily Planner</title>
+<meta name="description" content="A free daily planner that runs in your browser. Plan your day, one calm step at a time. No sign-up needed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{
+  --sand:#F1E9E1; --paper:#FBF8F4; --white:#fff;
+  --terra:#B9533F; --terra-dark:#9A4130; --warm:#EBCDA6;
+  --ink:#2B211C; --soft:#6E625B; --line:#E4DAD1;
+  --t-terra:#F1B6A6; --t-peach:#F7CFA4; --t-sand:#EADFC8; --t-sage:#C7DABF; --t-lav:#D4D1F1; --t-sky:#BFD8EC;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--sans);overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0 0 .5em}
+h1{font-size:clamp(2.6rem,6vw,4.4rem)}
+h2{font-size:clamp(2rem,4vw,3rem);text-align:center}
+h2::after{content:"";display:block;width:56px;height:2px;background:var(--terra);margin:14px auto 0}
+h3{font-size:1.6rem}
+p{margin:0 0 1em}
+a{color:var(--terra-dark)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{width:min(1100px,100% - 32px);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 14px;z-index:30}
+.skip:focus{left:8px}
+
+.btn{display:inline-block;background:var(--terra);color:#fff;text-decoration:none;font-weight:700;letter-spacing:.03em;padding:15px 34px;border:2px solid var(--terra);transition:background .15s}
+.btn:hover{background:var(--terra-dark);border-color:var(--terra-dark)}
+.btn.ghost{background:transparent;color:var(--terra-dark)}
+.btn.ghost:hover{background:var(--terra);color:#fff}
+
+/* header: centred wordmark, nav beneath */
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.brand{display:block;text-align:center;font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.04em;color:var(--ink);text-decoration:none;padding:14px 0 6px}
+nav ul{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 26px;list-style:none;margin:0;padding:0 0 12px}
+nav a{color:var(--ink);text-decoration:none;font-size:.95rem;padding:6px 2px;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--terra)}
+.menu-btn{display:none;position:absolute;right:16px;top:16px;background:none;border:1px solid var(--soft);padding:8px 14px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer}
+
+/* hero with watercolour blobs */
+.hero{position:relative;background:linear-gradient(180deg,var(--sand),var(--paper));padding:72px 0 80px;overflow:hidden}
+.blob{position:absolute;pointer-events:none;border-radius:58% 42% 55% 45% / 50% 60% 40% 50%;filter:blur(2px)}
+.b1{width:420px;height:320px;left:-120px;top:-90px;background:var(--warm);opacity:.65}
+.b2{width:460px;height:360px;right:-110px;bottom:-140px;background:var(--t-terra);opacity:.7}
+.b3{width:260px;height:220px;left:30%;bottom:-120px;background:var(--t-peach);opacity:.6}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.hero h1 em{font-style:italic;color:var(--terra)}
+.lead{font-size:1.2rem;color:var(--soft);max-width:32em}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:28px}
+.fine{font-size:.92rem;color:var(--soft);margin:0}
+
+.mock{background:var(--paper);border:1px solid var(--line);padding:16px;box-shadow:0 24px 50px -28px rgba(43,33,28,.45)}
+.mock-top{background:var(--warm);padding:7px 14px;display:flex;justify-content:space-between;font-weight:700;font-size:.88rem}
+.mock-top span:last-child{color:var(--terra-dark)}
+.mock-body{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.col{background:var(--white);border:1px solid var(--line);padding:10px}
+.col h4{margin:0 0 8px;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.chip{padding:8px 10px;font-size:.86rem;margin-bottom:8px;display:flex;justify-content:space-between;gap:8px}
+.chip small{opacity:.8}
+.cap{font-size:.8rem;color:var(--soft);text-align:center;margin:12px 0 0}
+
+section{padding:84px 0}
+.intro{max-width:36em;margin:26px auto 44px;text-align:center;color:var(--soft);font-size:1.08rem}
+
+/* framed cards */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.frame{background:var(--white);border:1px solid var(--line);outline:1px solid var(--line);outline-offset:-9px;padding:34px 28px;text-align:center}
+.frame .dot{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;font-size:1.3rem}
+.frame h3{margin-bottom:.3em}
+.frame p{color:var(--soft);margin:0}
+
+.tint{background:var(--sand)}
+
+/* priorities */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split h2{text-align:left}.split h2::after{margin-left:0}
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{padding:22px;min-height:130px}
+.box h3{font-size:1.4rem;margin-bottom:.2em}
+.box p{margin:0;font-size:.93rem}
+
+/* terracotta band */
+.band{background:var(--terra);color:#fff}
+.band h2,.band h2::after{color:#fff}
+.band h2::after{background:#fff}
+.band .intro{color:#fff}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step{background:var(--paper);color:var(--ink);padding:32px 28px}
+.step .n{font-family:var(--serif);font-size:2.6rem;color:var(--terra);line-height:1}
+.step p{color:var(--soft);margin:0}
+
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:0;list-style:none;margin:0}
+.pills li{padding:9px 24px;font-weight:700}
+.pills li:nth-child(1){background:var(--t-sage)}.pills li:nth-child(2){background:var(--t-lav)}
+.pills li:nth-child(3){background:var(--t-peach)}.pills li:nth-child(4){background:var(--t-sky)}
+
+.note{max-width:760px;margin:0 auto;background:var(--white);border:1px solid var(--line);outline:1px solid var(--line);outline-offset:-9px;padding:40px 36px;text-align:center}
+.note h2{font-size:2rem}
+.note p{margin:0;color:var(--soft)}
+
+.final{position:relative;text-align:center;background:var(--sand);overflow:hidden}
+.final .wrap{position:relative}
+.final .b1{left:-140px;top:-120px}.final .b2{right:-120px;bottom:-160px}
+
+footer{background:var(--ink);color:#EFE6DD;padding:34px 0;font-size:.93rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media (max-width:980px){
+  .hero .wrap,.split{grid-template-columns:1fr;gap:40px}
+  .grid,.steps{grid-template-columns:repeat(2,1fr)}
+  .split h2{text-align:center}.split h2::after{margin-left:auto}
+  .split>div:first-child{text-align:center}
+}
+@media (max-width:680px){
+  body{font-size:16px}
+  .menu-btn{display:block}
+  nav{display:none;border-top:1px solid var(--line)}
+  nav.open{display:block}
+  nav ul{flex-direction:column;align-items:center;padding:10px 0 16px}
+  section{padding:56px 0}
+  .hero{padding:44px 0 56px}
+  .grid,.steps,.matrix,.mock-body{grid-template-columns:1fr}
+  .btn{width:100%;text-align:center}
+  .note{padding:32px 22px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <a class="brand" href="#top">Lilia's Daily Planner</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="app.html" class="app-link">Try the app</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <div id="top"></div>
+  <section class="hero" aria-labelledby="h1">
+    <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span><span class="blob b3" aria-hidden="true"></span>
+    <div class="wrap">
+      <div>
+        <h1 id="h1">Small wins add up. <em>Plan your day,</em> one calm step at a time.</h1>
+        <p class="lead">A free daily planner that helps you choose what matters, give it a place in your day, and look back on what you finished.</p>
+        <div class="cta-row">
+          <a class="btn app-link" href="app.html">Try the app now</a>
+          <p class="fine">Opens in your browser. No sign-up needed.</p>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <div class="mock" role="img" aria-label="Illustration of the planner: a list of coloured tasks beside a day timeline.">
+          <div class="mock-top"><span>Today</span><span>Your day</span></div>
+          <div class="mock-body">
+            <div class="col">
+              <h4>Tasks</h4>
+              <div class="chip" style="background:var(--t-terra)">Draft essay intro <small>In progress</small></div>
+              <div class="chip" style="background:var(--t-sage)">Morning walk <small>Done</small></div>
+              <div class="chip" style="background:var(--t-lav)">Read chapter <small>Not started</small></div>
+              <div class="chip" style="background:var(--t-sky)">Tidy desk <small>Not started</small></div>
+            </div>
+            <div class="col">
+              <h4>Timeline</h4>
+              <div class="chip" style="background:var(--t-sage)"><span>Morning walk</span><small>8:00</small></div>
+              <div class="chip" style="background:var(--t-terra)">Draft essay intro <small>10:00</small></div>
+              <div class="chip" style="background:var(--t-lav)">Read chapter <small>2:00</small></div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="cap">Illustration only, not a real screenshot.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="features" aria-labelledby="f-h">
+    <div class="wrap">
+      <h2 id="f-h">Everything for a calm day</h2>
+      <p class="intro">All of this is in the free version you can open today.</p>
+      <div class="grid">
+        <article class="frame"><div class="dot" style="background:var(--t-terra)" aria-hidden="true">✓</div><h3>Colourful task list</h3><p>Colour your tasks, add sub-tasks and deadlines, and mark them Not started, In progress or Done.</p></article>
+        <article class="frame"><div class="dot" style="background:var(--t-peach)" aria-hidden="true">▦</div><h3>Four priority boxes</h3><p>Sort tasks into Do now, Do later, Don't forget, and Unimportant and not urgent.</p></article>
+        <article class="frame"><div class="dot" style="background:var(--t-sage)" aria-hidden="true">↔</div><h3>Drag and drop</h3><p>Drag a task onto the month calendar or the day timeline to give it a place in your day.</p></article>
+        <article class="frame"><div class="dot" style="background:var(--t-lav)" aria-hidden="true">✉</div><h3>People to reply</h3><p>See who is waiting to hear from you, sorted by importance or by how long they have waited.</p></article>
+        <article class="frame"><div class="dot" style="background:var(--t-sky)" aria-hidden="true">✎</div><h3>Daily notes</h3><p>Jot down thoughts, ideas and reminders for the day alongside your plan.</p></article>
+        <article class="frame"><div class="dot" style="background:var(--t-sand)" aria-hidden="true">◔</div><h3>Time tracking</h3><p>Track your time after you tick a task off, so you can see how your day really went.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="priorities" class="tint" aria-labelledby="p-h">
+    <div class="wrap split">
+      <div>
+        <h2 id="p-h">Decide what matters, then give it a time</h2>
+        <p style="color:var(--soft)">The priority boxes are inspired by the Eisenhower matrix. Sort your tasks, then drag them straight onto your calendar or timeline, all in one place.</p>
+        <a class="btn ghost app-link" href="app.html">Try the app now</a>
+      </div>
+      <div class="matrix" role="img" aria-label="Illustration of the four priority boxes: Do now, Do later, Don't forget, and Unimportant and not urgent.">
+        <div class="box" style="background:var(--t-terra)"><h3>Do now</h3><p>What needs you today.</p></div>
+        <div class="box" style="background:var(--t-peach)"><h3>Do later</h3><p>Important, but not yet.</p></div>
+        <div class="box" style="background:var(--t-sage)"><h3>Don't forget</h3><p>Small things worth remembering.</p></div>
+        <div class="box" style="background:var(--t-lav)"><h3>Unimportant and not urgent</h3><p>Park it, guilt-free.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="looking-back" class="band" aria-labelledby="l-h">
+    <div class="wrap">
+      <h2 id="l-h">Plan. Do. Look back.</h2>
+      <p class="intro">Celebrate the small wins by seeing what you actually finished.</p>
+      <div class="steps">
+        <article class="step"><div class="n" aria-hidden="true">1</div><h3>Plan</h3><p>Add your tasks, choose a priority box and drag them into your day.</p></article>
+        <article class="step"><div class="n" aria-hidden="true">2</div><h3>Do</h3><p>Tick tasks off as you go, and track your time once they're done.</p></article>
+        <article class="step"><div class="n" aria-hidden="true">3</div><h3>Look back</h3><p>Compare planned time with actual time, one gentle day at a time.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="who" aria-labelledby="w-h">
+    <div class="wrap">
+      <h2 id="w-h">Made for small, consistent wins</h2>
+      <p class="intro">Whether you're a student or anyone who plans their day with a to-do list, this is a gentle place to set goals and build habits, without pressure.</p>
+      <ul class="pills" aria-label="What matters to our users">
+        <li>Goal setting</li><li>Mindfulness</li><li>Building habits</li><li>Staying consistent</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="privacy" class="tint" aria-labelledby="d-h">
+    <div class="wrap">
+      <div class="note">
+        <h2 id="d-h">Your data stays in your browser</h2>
+        <p>There are no accounts and no syncing yet. Everything you add is saved only in the browser you use, so it won't appear on another device or browser. The app is designed for laptop browsers for now.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" aria-labelledby="c-h">
+    <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span>
+    <div class="wrap">
+      <h2 id="c-h">Ready for a calmer day?</h2>
+      <p class="intro">It's free, it opens in your browser, and you don't need to sign up. Start with one task.</p>
+      <a class="btn app-link" href="app.html">Try the app now</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Lilia's Daily Planner (working name)</span>
+    <span>Early MVP · Made in Adelaide, Australia</span>
+  </div>
+</footer>
+
+<script>
+  var btn = document.getElementById("menuBtn"), nav = document.getElementById("nav");
+  btn.addEventListener("click", function(){
+    var open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open);
+  });
+  nav.addEventListener("click", function(e){
+    if (e.target.tagName === "A") { nav.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+  });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

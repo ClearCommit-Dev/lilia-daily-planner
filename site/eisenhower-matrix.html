@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Eisenhower Matrix, Explained Simply · Lilia's Daily Planner</title>
+<meta name="description" content="A simple guide to the Eisenhower matrix: sort tasks by urgent and important, with a student example, common mistakes and FAQs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{--sand:#F1E9E1;--paper:#FBF8F4;--white:#fff;--terra:#B9533F;--terra-dark:#9A4130;--warm:#EBCDA6;--ink:#2B211C;--soft:#6E625B;--line:#E4DAD1;
+  --t-terra:#F1B6A6;--t-peach:#F7CFA4;--t-sand:#EADFC8;--t-sage:#C7DABF;--t-lav:#D4D1F1;--t-sky:#BFD8EC;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Atkinson Hyperlegible",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.75 var(--sans);overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;margin:0}
+a{color:var(--terra-dark);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{width:min(1100px,100% - 32px);margin-inline:auto}
+.btn{display:inline-block;background:var(--terra);color:#fff;text-decoration:none;font-weight:700;letter-spacing:.03em;padding:15px 34px;border:2px solid var(--terra)}
+.btn:hover{background:var(--terra-dark);border-color:var(--terra-dark)}
+
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.brand{display:block;text-align:center;font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.04em;color:var(--ink);text-decoration:none;padding:14px 0 6px}
+nav ul{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 26px;list-style:none;margin:0;padding:0 0 12px}
+nav a{color:var(--ink);text-decoration:none;font-size:.95rem;padding:6px 2px;border-bottom:2px solid transparent}
+nav a:hover,nav a[aria-current]{border-color:var(--terra)}
+
+/* article hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--sand),var(--paper));padding:64px 0 56px;text-align:center}
+.blob{position:absolute;pointer-events:none;border-radius:58% 42% 55% 45% / 50% 60% 40% 50%;filter:blur(2px)}
+.b1{width:380px;height:300px;left:-130px;top:-100px;background:var(--warm);opacity:.6}
+.b2{width:420px;height:320px;right:-140px;bottom:-170px;background:var(--t-sage);opacity:.65}
+.hero .wrap{position:relative;max-width:820px}
+.crumb{font-size:.9rem;margin:0 0 22px}
+.crumb a{color:var(--soft);text-decoration:none}.crumb a:hover{color:var(--terra-dark)}
+.tag{display:inline-block;background:var(--t-sage);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;margin-bottom:18px}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem)}
+.hero h1 em{color:var(--terra);font-style:italic;font-weight:500}
+.meta{color:var(--soft);font-size:.95rem;margin-top:18px}
+
+/* reading column */
+.article{max-width:720px;margin:0 auto;padding:0 16px 40px}
+.summary{background:var(--white);border:1px solid var(--line);outline:1px solid var(--line);outline-offset:-9px;padding:34px 36px;margin:-20px 0 48px;position:relative}
+.summary .label{font-family:var(--serif);font-style:italic;color:var(--terra);font-size:1.2rem;margin:0 0 6px}
+.summary p{margin:0}
+.summary p+p{margin-top:12px;color:var(--soft)}
+.article h2{font-size:clamp(1.9rem,3.6vw,2.5rem);margin:64px 0 18px;text-align:center}
+.article h2::after{content:"";display:block;width:56px;height:2px;background:var(--terra);margin:14px auto 0}
+.article h3{font-size:1.6rem;margin:0 0 6px}
+.article p{margin:0 0 1.1em}
+.article ul,.article ol{padding-left:1.3em;margin:0 0 1.2em}
+.article li{margin-bottom:.5em}
+.lede::first-letter{font-family:var(--serif);float:left;font-size:4.4rem;line-height:.8;padding:8px 10px 0 0;color:var(--terra)}
+.divider{text-align:center;color:var(--terra);letter-spacing:.6em;margin:56px 0 0;font-size:.9rem}
+
+/* matrix grid */
+.matrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:10px;margin:28px 0 14px}
+.matrix .ax{font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);display:flex;align-items:center;justify-content:center}
+.matrix .ax.side{writing-mode:vertical-rl;transform:rotate(180deg);padding:0 4px}
+.cell{padding:20px 18px;min-height:130px}
+.cell b{font-family:var(--serif);font-size:1.35rem;display:block;line-height:1.15;margin-bottom:4px}
+.cell span{font-size:.95rem}
+.note{font-size:.92rem;color:var(--soft);font-style:italic}
+
+.test{border-left:3px solid var(--terra);padding:6px 0 6px 20px;font-family:var(--serif);font-size:1.3rem;line-height:1.45;margin:28px 0}
+.test b{font-family:var(--sans);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-dark);display:block;margin-bottom:4px}
+
+/* box sections */
+.box{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:28px 0;border-bottom:1px solid var(--line)}
+.box:last-child{border-bottom:0}
+.num{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:2rem;font-weight:600}
+.box .sub{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin:0 0 10px}
+.box .do{background:var(--sand);padding:14px 18px;margin:0}
+.box .do strong{color:var(--terra-dark)}
+
+.steps{counter-reset:s;list-style:none;padding:0!important}
+.steps li{counter-increment:s;position:relative;padding:0 0 18px 62px;margin:0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:42px;height:42px;border-radius:50%;background:var(--t-peach);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:1.3rem}
+
+.callout{background:var(--t-sage);padding:26px 28px;margin:28px 0}
+.callout p{margin:0}
+.callout b{font-family:var(--serif);font-size:1.25rem;display:block;margin-bottom:4px}
+
+.table{overflow-x:auto;margin:20px 0 14px;border:1px solid var(--line);background:var(--white)}
+table{border-collapse:collapse;width:100%;font-size:.95rem;line-height:1.5}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--sand);font-weight:700}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;padding:2px 10px;font-weight:700;font-size:.85rem;white-space:nowrap}
+
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;font-family:var(--serif);font-size:1.4rem;font-weight:600;padding:14px 32px 14px 0;list-style:none;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:10px;color:var(--terra);font-size:1.6rem}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 16px;color:var(--ink)}
+
+.final{position:relative;overflow:hidden;background:var(--sand);text-align:center;padding:72px 0}
+.final .wrap{position:relative;max-width:640px}
+.final h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:16px}
+.final p{color:var(--soft);margin:0 0 26px}
+.back{display:block;text-align:center;margin:28px 0 0;font-size:.95rem}
+
+footer{background:var(--ink);color:#EFE6DD;padding:34px 0;font-size:.93rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media (max-width:680px){
+  body{font-size:17px}
+  .summary{padding:26px 22px}
+  .matrix{grid-template-columns:1fr 1fr}
+  .matrix .ax{display:none}
+  .cell{min-height:0;padding:16px 14px}
+  .box{grid-template-columns:1fr;gap:10px}
+  .num{width:52px;height:52px;font-size:1.6rem}
+  .btn{width:100%;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html">Lilia's Daily Planner</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="articles.html" aria-current="page">Articles</a></li>
+      <li><a href="app.html">Try the app</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="title">
+    <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span>
+    <div class="wrap">
+      <p class="crumb"><a href="articles.html">← All articles</a></p>
+      <span class="tag">Prioritising</span>
+      <h1 id="title">The Eisenhower Matrix, <em>Explained Simply</em></h1>
+      <p class="meta">With examples · 6 min read</p>
+    </div>
+  </section>
+
+  <article class="article">
+    <div class="summary">
+      <p class="label">In short</p>
+      <p>The Eisenhower matrix is a simple way to decide what to do first. You sort every task into one of four boxes by asking two questions: <em>Is it urgent?</em> and <em>Is it important?</em> Then you do the urgent and important tasks now, schedule the important ones for later, keep small urgent tasks short or hand them off, and let go of the rest.</p>
+      <p>It suits students, busy workers and anyone whose to-do list feels longer than their day. All you need is a list of tasks and five minutes.</p>
+    </div>
+
+    <h2 id="what">What is the Eisenhower matrix?</h2>
+    <p class="lede">The Eisenhower matrix (also called the Eisenhower box or the urgent–important matrix) is a two-by-two grid. One side asks whether a task is <strong>urgent</strong>. The other asks whether it's <strong>important</strong>. Every task lands in one of four boxes, and each box tells you what to do with it.</p>
+
+    <div class="matrix" role="table" aria-label="The four boxes of the Eisenhower matrix">
+      <div role="row" style="display:contents">
+        <span class="ax" aria-hidden="true"></span>
+        <span class="ax" role="columnheader">Urgent</span>
+        <span class="ax" role="columnheader">Not urgent</span>
+      </div>
+      <div role="row" style="display:contents">
+        <span class="ax side" role="rowheader">Important</span>
+        <div class="cell" role="cell" style="background:var(--t-terra)"><b>1. Do now</b><span>Deal with it today.</span></div>
+        <div class="cell" role="cell" style="background:var(--t-peach)"><b>2. Do later</b><span>Give it a time in your plan.</span></div>
+      </div>
+      <div role="row" style="display:contents">
+        <span class="ax side" role="rowheader">Not important</span>
+        <div class="cell" role="cell" style="background:var(--t-sage)"><b>3. Don't forget</b><span>Keep it quick, or ask for help.</span></div>
+        <div class="cell" role="cell" style="background:var(--t-lav)"><b>4. Unimportant and not urgent</b><span>Park it or drop it.</span></div>
+      </div>
+    </div>
+    <p class="note">The box names above are the friendly labels used in <a href="https://orange-sea-9c9f.kienplays9.workers.dev/">Lilia's Daily Planner</a>. Many guides call the four actions <strong>Do, Schedule, Delegate</strong> and <strong>Delete</strong>.</p>
+
+    <h2 id="difference">Urgent vs important: what's the difference?</h2>
+    <p>This is the whole trick, so it's worth slowing down.</p>
+    <ul>
+      <li><strong>Urgent</strong> means it needs attention <em>soon</em>. There's a deadline close by, or someone is waiting on you.</li>
+      <li><strong>Important</strong> means it moves <em>your</em> goals forward, such as your studies, health, relationships or work.</li>
+    </ul>
+    <p>They feel similar, but they're not the same. A notification is urgent but rarely important. Starting exam revision three weeks early is important but not urgent. Urgent tasks make noise, while important tasks wait quietly until they turn into emergencies.</p>
+    <div class="test">
+      <b>A quick test</b>
+      If I didn't do this, what would happen next week? And what would happen in six months?
+    </div>
+    <p>Urgent tasks cause problems next week. Important tasks cause problems in six months.</p>
+
+    <h2 id="boxes">The four boxes, one at a time</h2>
+    <div class="box">
+      <div class="num" style="background:var(--t-terra)" aria-hidden="true">1</div>
+      <div>
+        <h3>Do now</h3>
+        <p class="sub">Urgent and important</p>
+        <p>Tasks with a real deadline that matter to you, such as an assignment due tomorrow, paying a bill before it's overdue or a sick pet.</p>
+        <p class="do"><strong>What to do:</strong> Handle these today. If this box is overflowing every day, that's a sign that box 2 tasks are being left until they become urgent.</p>
+      </div>
+    </div>
+    <div class="box">
+      <div class="num" style="background:var(--t-peach)" aria-hidden="true">2</div>
+      <div>
+        <h3>Do later</h3>
+        <p class="sub">Important, not urgent</p>
+        <p>Tasks that build your future: revising early, exercising, planning your week, calling a friend, learning a skill.</p>
+        <p class="do"><strong>What to do:</strong> Give each one a specific time in your day or week. This is the box that makes the biggest difference, because nothing forces you to do these tasks until it's too late. Protect time for them first.</p>
+      </div>
+    </div>
+    <div class="box">
+      <div class="num" style="background:var(--t-sage)" aria-hidden="true">3</div>
+      <div>
+        <h3>Don't forget</h3>
+        <p class="sub">Urgent, not important</p>
+        <p>Small things that are pressing but don't move your goals much, like replying to a group-chat question, booking a haircut or returning a library book.</p>
+        <p class="do"><strong>What to do:</strong> Keep them short. Batch them together, set a reminder, or ask someone else to help if you can. The classic advice is to <em>delegate</em>. If you're a student without anyone to delegate to, aim to <em>shrink</em> these tasks instead.</p>
+      </div>
+    </div>
+    <div class="box">
+      <div class="num" style="background:var(--t-lav)" aria-hidden="true">4</div>
+      <div>
+        <h3>Unimportant and not urgent</h3>
+        <p class="sub">Neither</p>
+        <p>Things that feel productive but aren't, like re-colouring your notes for the third time, scrolling "for research" or reorganising apps.</p>
+        <p class="do"><strong>What to do:</strong> Park them, guilt-free, or drop them. You can come back to them if they ever start to matter.</p>
+      </div>
+    </div>
+
+    <h2 id="steps">How to use it in 5 steps</h2>
+    <ol class="steps">
+      <li><strong>Brain dump.</strong> Write down every task on your mind, big and small.</li>
+      <li><strong>Ask the two questions.</strong> For each task, decide whether it's urgent and whether it's important. Don't overthink it. Go with your first honest answer.</li>
+      <li><strong>Sort into the four boxes.</strong> Most people find their box 1 is smaller than they feared and their box 4 is bigger than they'd like to admit.</li>
+      <li><strong>Give box 1 and box 2 tasks a time.</strong> Sorting alone doesn't get things done. Put "Do now" tasks into today's plan, and spread "Do later" tasks across the coming days.</li>
+      <li><strong>Look back at the end of the day.</strong> What did you finish? What moves to tomorrow? Did anything get sorted into the wrong box?</li>
+    </ol>
+    <div class="callout">
+      <b>In Lilia's Daily Planner</b>
+      <p>Add your tasks, drop each into one of the four priority boxes, then drag it onto the day timeline or month calendar to give it a time. Once it's done, tick it off and track your time.</p>
+    </div>
+
+    <h2 id="example">Example: one student's sorted list</h2>
+    <p><em>Illustrative example.</em> Sam is a second-year uni student. On Monday morning, the list looks like this:</p>
+    <div class="table" tabindex="0" role="region" aria-label="Sam's sorted to-do list">
+      <table>
+        <thead><tr><th scope="col">Task</th><th scope="col">Urgent?</th><th scope="col">Important?</th><th scope="col">Box</th></tr></thead>
+        <tbody>
+          <tr><td>Lab report due tomorrow</td><td>Yes</td><td>Yes</td><td><span class="pill" style="background:var(--t-terra)">Do now</span></td></tr>
+          <tr><td>Start revising for exam in 3 weeks</td><td>No</td><td>Yes</td><td><span class="pill" style="background:var(--t-peach)">Do later</span> 30 min on Mon, Wed, Fri</td></tr>
+          <tr><td>Go for a run</td><td>No</td><td>Yes</td><td><span class="pill" style="background:var(--t-peach)">Do later</span> Tuesday 7 am</td></tr>
+          <tr><td>Reply to group-project chat about meeting time</td><td>Yes</td><td>Not really</td><td><span class="pill" style="background:var(--t-sage)">Don't forget</span> 2-minute reply</td></tr>
+          <tr><td>Return library book (due today)</td><td>Yes</td><td>No</td><td><span class="pill" style="background:var(--t-sage)">Don't forget</span> Drop off on the way to class</td></tr>
+          <tr><td>Redesign notes template</td><td>No</td><td>No</td><td><span class="pill" style="background:var(--t-lav)">Unimportant and not urgent</span> Park it</td></tr>
+          <tr><td>Watch "one more" episode</td><td>No</td><td>No</td><td><span class="pill" style="background:var(--t-lav)">Unimportant and not urgent</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Sam's day now has a clear shape. The lab report comes first. The quick tasks get bundled together. Revision and exercise each have a place later in the week, so they no longer hang over Sam all day.</p>
+
+    <h2 id="mistakes">Common mistakes (and easy fixes)</h2>
+    <div class="table" tabindex="0" role="region" aria-label="Common mistakes and fixes">
+      <table>
+        <thead><tr><th scope="col">Mistake</th><th scope="col">Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Treating everything as urgent</td><td>Ask: "What actually happens if this waits until tomorrow?"</td></tr>
+          <tr><td>Sorting but never scheduling</td><td>Give every box 1 and box 2 task a time slot</td></tr>
+          <tr><td>Ignoring box 2 until it becomes box 1</td><td>Book at least one "Do later" task every day</td></tr>
+          <tr><td>Feeling guilty about box 4</td><td>Parking a task is a decision, not a failure</td></tr>
+          <tr><td>Re-sorting all day</td><td>Sort once in the morning and check briefly in the evening</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="name">Where does the name come from?</h2>
+    <p>The matrix is named after Dwight D. Eisenhower, the US general and later president. In a 1954 speech, he described having two kinds of problems, <a href="https://quoteinvestigator.com/2014/05/09/urgent/" target="_blank" rel="noopener">the urgent and the important</a>, and observed that they rarely overlap. He credited the idea to an unnamed "former college president". According to Quote Investigator, there's no evidence that Eisenhower used the four-box technique himself. The grid was popularised decades later by Stephen Covey in <em>The 7 Habits of Highly Effective People</em> (1989).</p>
+
+    <h2 id="faq">Frequently asked questions</h2>
+    <details>
+      <summary>Is the Eisenhower matrix good for students?</summary>
+      <p>Yes. Students juggle deadlines of very different sizes, and the matrix helps separate "due tomorrow" from "important for the exam". The main adjustment is that "delegate" often becomes "keep it quick".</p>
+    </details>
+    <details>
+      <summary>How often should I use it?</summary>
+      <p>Once a day works well for most people. Sort in the morning, or the evening before, and give a few minutes to looking back at night.</p>
+    </details>
+    <details>
+      <summary>What if a task fits two boxes?</summary>
+      <p>Pick the box that matches its <em>next step</em>. A big project can be "Do later" overall while today's small piece of it is "Do now".</p>
+    </details>
+    <details>
+      <summary>Do I need an app?</summary>
+      <p>No. A sheet of paper divided into four works. An app helps you move tasks straight from a box into a time slot and see what you finished.</p>
+    </details>
+    <p class="divider" aria-hidden="true">· · ·</p>
+  </article>
+
+  <section class="final" aria-labelledby="try">
+    <span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span>
+    <div class="wrap">
+      <h2 id="try">Try it now</h2>
+      <p>Write down five things on your mind today and sort them into the four boxes. Then give your "Do now" and one "Do later" task a time. If you'd like the boxes ready-made, open Lilia's Daily Planner. It's free, opens in your browser and doesn't need a sign-up. Start with one task.</p>
+      <a class="btn" href="https://orange-sea-9c9f.kienplays9.workers.dev/">Open Lilia's Daily Planner</a>
+      <a class="back" href="articles.html">← Back to all articles</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Lilia's Daily Planner (working name)</span>
+    <span>Early MVP · Made in Adelaide, Australia</span>
+  </div>
+</footer>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+</body>
+</html>

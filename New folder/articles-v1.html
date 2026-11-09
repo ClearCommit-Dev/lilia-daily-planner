@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Articles · Lilia's Daily Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--sand:#F1E9E1;--paper:#FBF8F4;--white:#fff;--terra:#B9533F;--terra-dark:#9A4130;--ink:#2B211C;--soft:#6E625B;--line:#E4DAD1;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Atkinson Hyperlegible",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 var(--sans)}
+h1,h2{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0 0 .5em}
+h1{font-size:clamp(2.4rem,5vw,3.8rem);text-align:center}
+h1::after{content:"";display:block;width:56px;height:2px;background:var(--terra);margin:14px auto 0}
+a{color:var(--terra-dark)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{width:min(1100px,100% - 32px);margin-inline:auto}
+.btn{display:inline-block;background:var(--terra);color:#fff;text-decoration:none;font-weight:700;letter-spacing:.03em;padding:15px 34px;border:2px solid var(--terra)}
+.btn:hover{background:var(--terra-dark);border-color:var(--terra-dark)}
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.brand{display:block;text-align:center;font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:.04em;color:var(--ink);text-decoration:none;padding:14px 0 6px}
+nav ul{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 26px;list-style:none;margin:0;padding:0 0 12px}
+nav a{color:var(--ink);text-decoration:none;font-size:.95rem;padding:6px 2px;border-bottom:2px solid transparent}
+nav a:hover,nav a[aria-current]{border-color:var(--terra)}
+.hero{background:linear-gradient(180deg,var(--sand),var(--paper));padding:72px 0 40px;text-align:center}
+.hero p{max-width:34em;margin:26px auto 0;color:var(--soft);font-size:1.1rem}
+.soon{max-width:640px;margin:40px auto 90px;background:var(--white);border:1px solid var(--line);outline:1px solid var(--line);outline-offset:-9px;padding:44px 32px;text-align:center}
+.soon h2{font-size:2rem}
+.soon p{color:var(--soft)}
+footer{background:var(--ink);color:#EFE6DD;padding:34px 0;font-size:.93rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:680px){body{font-size:16px}.btn{width:100%;text-align:center}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="index.html">Lilia's Daily Planner</a>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="articles.html" aria-current="page">Articles</a></li>
+      <li><a href="app.html">Try the app</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Articles</h1>
+      <p>A place for gentle ideas on planning, habits and small daily wins.</p>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="soon">
+      <h2>Articles are coming soon</h2>
+      <p>Nothing has been published yet. In the meantime, you can try the planner.</p>
+      <a class="btn" href="app.html">Try the app now</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Lilia's Daily Planner (working name)</span>
+    <span>Early MVP · Made in Adelaide, Australia</span>
+  </div>
+</footer>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  // Cloudflare Worker that serves the website. The name must match the Worker in the dashboard.
+  "name": "spring-surf-fc2e",
+  "compatibility_date": "2026-11-09",
+  // Only the files in site/ are published.
+  "assets": {
+    "directory": "./site"
+  }
+}
